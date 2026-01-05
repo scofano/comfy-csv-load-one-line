@@ -1,12 +1,13 @@
 # ComfyUI CSV Load One Line Node
 
-This is a custom node for ComfyUI that reads the first line from a CSV file, extracts the first two columns and the full line, and then removes the first line from the file.
+This is a custom node for ComfyUI that reads the first line from a CSV file, extracts up to three columns and the full line, and then removes the first line from the file.
 
 ## Features
 
 - Reads a CSV file using semicolon (`;`) as delimiter
 - Outputs the total number of lines found to the console
-- Provides three string outputs: first column, second column, and full line
+- Provides four string outputs: first column, second column, third column, and full line
+- Automatically handles CSV files with 1-3+ columns (returns empty strings for missing columns)
 - Modifies the CSV file by removing the processed first line
 - Includes a seed input to ensure the node runs on each execution (non-deterministic)
 
@@ -17,8 +18,9 @@ This is a custom node for ComfyUI that reads the first line from a CSV file, ext
 
 ## Outputs
 
-- **first_column** (STRING): The first column of the processed line
-- **second_column** (STRING): The second column of the processed line
+- **first_column** (STRING): The first column of the processed line (empty string if not available)
+- **second_column** (STRING): The second column of the processed line (empty string if not available)
+- **third_column** (STRING): The third column of the processed line (empty string if not available)
 - **full_line** (STRING): The complete processed line
 
 ## Usage

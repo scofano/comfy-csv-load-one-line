@@ -11,8 +11,8 @@ class CSVLoadOneLine:
             }
         }
 
-    RETURN_TYPES = ("STRING", "STRING", "STRING")
-    RETURN_NAMES = ("first_column", "second_column", "full_line")
+    RETURN_TYPES = ("STRING", "STRING", "STRING", "STRING")
+    RETURN_NAMES = ("first_column", "second_column", "third_column", "full_line")
     FUNCTION = "process"
     CATEGORY = "CSV Load One Line"
 
@@ -35,11 +35,11 @@ class CSVLoadOneLine:
         # Parse the first line using csv reader
         reader = csv.reader([first_line], delimiter=';')
         row = next(reader)
-        if len(row) < 2:
-            raise ValueError("First line must have at least 2 columns")
 
-        first_column = row[0]
-        second_column = row[1]
+        # Dynamically assign columns, using empty strings for missing columns
+        first_column = row[0] if len(row) >= 1 else ""
+        second_column = row[1] if len(row) >= 2 else ""
+        third_column = row[2] if len(row) >= 3 else ""
         full_line = first_line
 
         # Remove the first line and write back the rest
@@ -47,4 +47,4 @@ class CSVLoadOneLine:
         with open(file_path, 'w', newline='', encoding='utf-8') as f:
             f.writelines(remaining_lines)
 
-        return first_column, second_column, full_line
+        return first_column, second_column, third_column, full_line
