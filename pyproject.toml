@@ -1,0 +1,21 @@
+[project]
+name = "csv-load-one-line"
+description = "ComfyUI custom nodes for reading CSV rows, with delete and non-delete variants."
+version = "1.0.1"
+dependencies = []
+license = { text = "GNU Affero General Public License v3.0" }
+classifiers = [
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/scofano/comfy-csv-load-one-line"
+Documentation = "https://github.com/scofano/comfy-csv-load-one-line#readme"
+Repository = "https://github.com/scofano/comfy-csv-load-one-line"
+Issues = "https://github.com/scofano/comfy-csv-load-one-line/issues"
+
+[tool.comfy]
+PublisherId = "dansco"
+DisplayName = "CSV Load One Line"
+Icon = ""
+includes = []
